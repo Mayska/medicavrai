@@ -1,0 +1,30 @@
+<br>
+<h2>Soin hom&eacute;opathie par onde t&eacute;llurique</h2>
+<br>
+<div class="row row-cols-1 row-cols-md-2 g-4 card-group">
+	<div th:each="homeopathie: ${homeopathies}" 
+		class="card text-white bg-primary mb-3" 
+		style="max-width: 18rem;
+    	right: 0px;
+    	margin-right: 5px;">
+    	
+	<div class="card-body">
+		<h5 class="card-title" th:text="${homeopathie.nomHomeopathie}"></h5>
+		<p class="card-text" th:text="${homeopathie.descriptionHomeopathie}"></p>
+		<a th:if="${frequence==null}" th:href="@{'/homeopathiefrequence/'+${homeopathie.id}}" 
+			class="link-info">Faire le traitement</a>
+	<dix class="container" th:if="${frequence != null}" th:insert="fragments/frequence"></div>
+	</div>
+	<div id="card"
+		th:if="${frequence!=null}" 
+		 th:each="homeopathie: ${homeopathies}"
+		 class="card text-white bg-success mb-3" 
+		 style="max-width: 30rem;">
+		<h5 id="cardTitre" class="card-title position-absolute top-50 start-50 translate-middle" 
+			th:text="${homeopathie.nomHomeopathie}"></h5>
+	</div>	
+</div>
+
+
+
+
