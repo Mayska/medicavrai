@@ -10,15 +10,19 @@ import org.springframework.web.client.RestTemplate;
 import com.medicavrai.webapp.CustomProperties;
 import com.medicavrai.webapp.model.Homeopathie;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
-@Slf4j
+@Log4j2
 @Component
 public class HomeopathieProxy {
 
 	@Autowired
 	private CustomProperties props;
 
+	private static final Logger logger = LogManager.getLogger(HomeopathieProxy.class);
+	
 	public Iterable<Homeopathie> getHomeopathies() {
 		String baseApiUrl = props.getApiUrl();
 		String getHomeopathiesUrl = baseApiUrl + "/homeopathies";
@@ -28,7 +32,7 @@ public class HomeopathieProxy {
 				new ParameterizedTypeReference<Iterable<Homeopathie>>() {
 				});
 
-//		log.debug("Get Employees call " + response.getStatusCode().toString());
+		logger.info("Get Employees call " + response.getStatusCode().toString());
 
 		return response.getBody();
 	}
@@ -40,8 +44,6 @@ public class HomeopathieProxy {
 		ResponseEntity<Homeopathie> response = restTemplate.exchange(getHomeopathiesUrl, HttpMethod.GET, null,
 				new ParameterizedTypeReference<Homeopathie>() {
 				});
-
-//		log.debug("Get Employees call " + response.getStatusCode().toString());
 
 		return response.getBody();
 	}
