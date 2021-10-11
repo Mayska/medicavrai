@@ -9,7 +9,7 @@ public class FrequenceQuantiqueService {
 
 	public ArrayList<String> getFrequenceSonTellurique() {
 		ArrayList<String> arrayList = new ArrayList<String>();
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 10; i++) {
 			arrayList.add(frequenceRandomString());
 		}
 		return arrayList;
