@@ -20,5 +20,21 @@ public class Utilisateur {
 
 	@Column(name = "mail_utilisateur")
 	private String mailUtilisateur;
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getMailUtilisateur() {
+		return mailUtilisateur;
+	}
+	
+	public void setMailUtilisateur(String mailUtilisateur) {
+		this.mailUtilisateur = mailUtilisateur;
+	}
 
 }

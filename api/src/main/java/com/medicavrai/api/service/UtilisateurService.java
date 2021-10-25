@@ -19,4 +19,10 @@ public class UtilisateurService {
 		Iterable<Utilisateur> findAll = utilisateurRepository.findAll();
 		return findAll;
 	}
+	
+	public Utilisateur saveUtilisateur(Utilisateur utilisateur) {
+		Utilisateur utilisateurSave = utilisateurRepository.save(utilisateur);
+		return utilisateurSave;
+	}
+
 }
