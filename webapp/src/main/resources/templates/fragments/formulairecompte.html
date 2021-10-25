@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<h1>Formulaire créer Utilisateur</h1>
+<form method="post" action="#" th:action="@{/sauvegarde_utilisateur}" th:object="${utilisateur}">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" th:field="*{mailUtilisateur}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<div class="container-md" th:if="${erreurs != null}" th:each="erreur: ${erreurs}">
+	<p th:text="${erreur}"></p>
+</div>
+</html>
