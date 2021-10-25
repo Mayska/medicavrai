@@ -11,14 +11,14 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "signezodiaque")
-public class SigneZodiaque {
+@Table(name = "utilisateurs")
+public class Utilisateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "nom_signe_zodiaque")
-	private String nomSigneZodiaque;
+	@Column(name = "mail_utilisateur")
+	private String mailUtilisateur;
 
 }
