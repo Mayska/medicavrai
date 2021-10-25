@@ -27,6 +27,10 @@ public class UtilisateurControllerTest {
 		this.mockMvc.perform(get("/utilisateurs")).andDo(print()).andExpect(status().isOk());
 	}
 	
+	/**
+	 * Ajouter un utilisateur
+	 * @throws Exception
+	 */
 	@Test
 	public void test_creerUtilisateur() throws Exception {
 		Utilisateur utilisateur = new Utilisateur();
@@ -39,4 +43,18 @@ public class UtilisateurControllerTest {
 				.andExpect(status().isOk());
 	}
 	
+	/**
+	 * Ajouter un utilisateur avec mail vide
+	 * @throws Exception
+	 
+	@Test
+	public void test_creerUtilisateurVide() throws Exception {
+		Utilisateur utilisateur = new Utilisateur();
+		String writeValueAsString = new ObjectMapper().writeValueAsString(utilisateur);
+		this.mockMvc.perform(post("/creer_utilisateur")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(writeValueAsString))
+				.andDo(print());
+	}
+	*/
 }

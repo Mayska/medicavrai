@@ -1,11 +1,13 @@
 package com.medicavrai.api.apiservice;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 import com.medicavrai.api.model.Utilisateur;
 import com.medicavrai.api.service.UtilisateurService;
@@ -26,13 +28,9 @@ public class UtilisateurApiService {
 	}
 
 	private void checkUtilisateur(Utilisateur utilisateur) {
-		Optional<Utilisateur> ofNullable = Optional.ofNullable(utilisateur);
-		if(ofNullable.get() == null) {
-			String msg = "[Erreur] l'utilisateur ne peut être vide.";
-			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, msg);
-		}
-		if(ofNullable.get().getMailUtilisateur().isEmpty()) {
-			String msg = "[Erreur] le mail utilisateur ne peut être vide.";
+		Optional<String> ofNullable = Optional.ofNullable(utilisateur.getMailUtilisateur());
+		if(!ofNullable.isPresent()) {
+			String msg = "[Erreur] le mail utilisateur ne peut pas être vide.";
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, msg);
 		}
 	}
