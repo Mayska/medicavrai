@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS employees;
-DROP TABLE IF EXISTS signezodiaque;
+DROP TABLE IF EXISTS utilisateurs;
 DROP TABLE IF EXISTS homeopathie;
 
 
@@ -16,13 +16,13 @@ INSERT INTO employees (first_name, last_name, mail, password) VALUES
   ('Sophie', 'FONCEK', 'sophiefoncek@mail.com', 'sophie'),
   ('Agathe', 'FEELING', 'agathefeeling@mail.com', 'agathe');
   
-CREATE TABLE signezodiaque (
+CREATE TABLE utilisateurs (
   id INT AUTO_INCREMENT  PRIMARY KEY,
-  nom_signe_zodiaque VARCHAR(250) NOT NULL
+  mail_utilisateur VARCHAR(250) NOT NULL
 );
 
-INSERT INTO signezodiaque (nom_signe_zodiaque) VALUES
-  ('capricorne'),('verseau');
+INSERT INTO utilisateurs (mail_utilisateur) VALUES
+  ('admin@admin.admin');
   
 CREATE TABLE homeopathie(
 	id INT AUTO_INCREMENT  PRIMARY KEY,
