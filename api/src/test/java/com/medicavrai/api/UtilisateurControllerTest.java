@@ -22,9 +22,15 @@ public class UtilisateurControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 	
+	/**
+	 * Affiche la liste des utilisateurs.
+	 * @throws Exception
+	 */
 	@Test
 	public void test_getUtilisateurs() throws Exception {
-		this.mockMvc.perform(get("/utilisateurs")).andDo(print()).andExpect(status().isOk());
+		mockMvc.perform(get("/utilisateurs"))
+			.andDo(print())
+			.andExpect(status().isOk());
 	}
 	
 	/**
@@ -36,25 +42,48 @@ public class UtilisateurControllerTest {
 		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.setMailUtilisateur("testMvc@test.fr");
 		String writeValueAsString = new ObjectMapper().writeValueAsString(utilisateur);
-		this.mockMvc.perform(post("/creer_utilisateur")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(writeValueAsString))
-				.andDo(print())
-				.andExpect(status().isOk());
+		mockMvc.perform(post("/creer_utilisateur")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(writeValueAsString))
+			// .andDo(print())
+			.andExpect(status().isOk());
+	}
+	
+	/**
+	 * Afficher un utilisateur.
+	 * @throws Exception
+	 */
+	@Test
+	public void test_afficherUtilisateur() throws Exception {
+		mockMvc.perform(get("/utilisateur/1"))
+			// .andDo(print())
+			.andExpect(status().isOk());
+	}
+	
+	/**
+	 * Afficher un utilisateur qui n'existe pas.
+	 * @throws Exception
+	 */
+	@Test
+	public void test_afficherUtilisateurNonExistant() throws Exception {
+		mockMvc.perform(get("/utilisateur/9999"))
+			// .andDo(print())
+			.andExpect(status().isInternalServerError());
 	}
 	
 	/**
 	 * Ajouter un utilisateur avec mail vide
 	 * @throws Exception
-	 
+	 */
 	@Test
 	public void test_creerUtilisateurVide() throws Exception {
 		Utilisateur utilisateur = new Utilisateur();
 		String writeValueAsString = new ObjectMapper().writeValueAsString(utilisateur);
 		this.mockMvc.perform(post("/creer_utilisateur")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(writeValueAsString))
-				.andDo(print());
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(writeValueAsString))
+			//.andDo(print())
+			.andExpect(status().isBadRequest());
 	}
-	*/
+	
 }
