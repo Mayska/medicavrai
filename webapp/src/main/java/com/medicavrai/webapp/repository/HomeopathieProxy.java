@@ -31,9 +31,7 @@ public class HomeopathieProxy {
 		ResponseEntity<Iterable<Homeopathie>> response = restTemplate.exchange(getHomeopathiesUrl, HttpMethod.GET, null,
 				new ParameterizedTypeReference<Iterable<Homeopathie>>() {
 				});
-
 		logger.info("Get Employees call " + response.getStatusCode().toString());
-
 		return response.getBody();
 	}
 
@@ -44,7 +42,6 @@ public class HomeopathieProxy {
 		ResponseEntity<Homeopathie> response = restTemplate.exchange(getHomeopathiesUrl, HttpMethod.GET, null,
 				new ParameterizedTypeReference<Homeopathie>() {
 				});
-
 		return response.getBody();
 	}
 

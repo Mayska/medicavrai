@@ -27,8 +27,8 @@ public class CompteUtilisateur {
 	
 	@PostMapping("/sauvegarde_utilisateur")
     public String submit(@ModelAttribute Utilisateur utilisateur, Model model) {
-		List<String> verificationFormulaireUtilisateur = utilisateurApiServcie.verificationFormulaireUtilisateur(utilisateur);
-		model.addAttribute("erreurs", verificationFormulaireUtilisateur );
+		utilisateurApiServcie.creerUtilisateur(utilisateur);
+		model.addAttribute("erreurs", "" );
 		model.addAttribute("formulairecompte", "formulairecompte" );
         return "index";
     }
